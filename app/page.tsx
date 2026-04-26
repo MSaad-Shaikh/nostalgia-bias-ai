@@ -356,7 +356,7 @@ export default function BiasInspector() {
       payload.key_insights = s.res.key_insights;
     }
 
-    fetch("http://127.0.0.1:5000/api/chat", {
+    fetch("https://nostalgia-bias-ai.onrender.com/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -398,7 +398,7 @@ export default function BiasInspector() {
     abortRef.current = ctrl;
     const fd = new FormData();
     fd.append("file", f);
-    const r = await fetch("http://127.0.0.1:5000/api/headers", { method: "POST", body: fd, signal: ctrl.signal });
+    const r = await fetch("https://nostalgia-bias-ai.onrender.com/api/headers", { method: "POST", body: fd, signal: ctrl.signal });
     if (!r.ok) throw new Error(`${r.status}`);
     const d = await r.json();
     const c: string[] = Array.isArray(d?.columns) ? d.columns.map(String) : [];
@@ -425,7 +425,7 @@ export default function BiasInspector() {
     const fd = new FormData();
     fd.append("file", s.file);
     if (s.tgt) fd.append("target_column", s.tgt);
-    fetch("http://127.0.0.1:5000/api/analyze", { method: "POST", body: fd })
+    fetch("https://nostalgia-bias-ai.onrender.com/api/analyze", { method: "POST", body: fd })
       .then((r) => { if (!r.ok) throw new Error(`${r.status}`); return r.json(); })
       .then((d: Res) => {
         if (!d.metrics) throw new Error("No metrics.");
