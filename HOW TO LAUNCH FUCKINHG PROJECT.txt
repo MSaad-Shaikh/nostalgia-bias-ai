@@ -1,0 +1,8 @@
+HOW TO LAUNCH FUCKINHG PROJECT
+
+pnpm dev
+
+
+NEW TERMINAL
+.\venv\Scripts\activate
+python backend.py
